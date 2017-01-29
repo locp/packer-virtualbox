@@ -19,7 +19,8 @@
                 "gpg --keyserver pgp.mit.edu --recv-key 7F438280EF8D349F",
                 "gpg -a --export EF8D349F | apt-key add -",
                 "apt-get update",
-                "apt-get -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold"
+                "apt-get -y -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold dist-upgrade",
+                "/etc/init.d/vboxadd setup"
             ]
         },
         {

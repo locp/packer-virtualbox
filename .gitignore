@@ -1,0 +1,6 @@
+*.swp
+box.ovf
+builds/
+packer-ubuntu-14.04-x86_64-virtualbox-vagrant-puppet-1457717433-disk1.vmdk
+packer_cache/
+virtualbox.box
