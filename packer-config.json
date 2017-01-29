@@ -1,0 +1,38 @@
+{
+    "builders": [
+        {
+            "type": "virtualbox-ovf",
+            "headless": true,
+            "source_path": "box.ovf",
+            "ssh_username": "root",
+            "ssh_password": "puppet",
+            "shutdown_command": "shutdown -P now"
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "environment_vars": [
+              "DEBIAN_FRONTEND=noninteractive"
+            ],
+            "inline": [
+                "gpg --keyserver pgp.mit.edu --recv-key 7F438280EF8D349F",
+                "gpg -a --export EF8D349F | apt-key add -",
+                "apt-get update",
+                "apt-get -o Dpkg::Options::=--force-confdef -o Dpkg::Options::=--force-confold"
+            ]
+        },
+        {
+          "type": "file",
+          "source": "/var/log/dpkg.log",
+          "destination": "dpkg.log",
+          "direction": "download"
+        },
+    ],
+    "post-processors": [
+        {
+            "output": "builds/{{.Provider}}-ubuntu14.box",
+            "type": "vagrant"
+        }
+    ]
+}
