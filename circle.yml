@@ -1,0 +1,4 @@
+---
+dependencies:
+  post:
+    - packer --version
