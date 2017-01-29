@@ -5,3 +5,8 @@ dependencies:
     - mkdir -p ~/packer
     - cd ~/packer; unzip /tmp/packer.zip
     - ~/packer/packer --version || true
+    - wget --progress=dot -O /tmp/virtualbox.box https://atlas.hashicorp.com/puppetlabs/boxes/ubuntu-14.04-64-puppet/versions/1.0.3/providers/virtualbox.box
+    - cd /tmp; tar xzf virtualbox.box packer-ubuntu-14.04-x86_64-virtualbox-vagrant-puppet-1457717433-disk1.vmdk box.ovf
+test:
+  override:
+    - pwd
