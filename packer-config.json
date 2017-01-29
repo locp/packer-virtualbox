@@ -27,7 +27,7 @@
           "source": "/var/log/dpkg.log",
           "destination": "dpkg.log",
           "direction": "download"
-        },
+        }
     ],
     "post-processors": [
         {
